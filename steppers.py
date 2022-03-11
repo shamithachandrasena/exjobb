@@ -53,30 +53,30 @@ def arm_callback(channel):
     else:
         IO.output(arm_light, IO.LOW)
 
-if __name__ == '__main__':
-    IO.setmode(IO.BCM)
+#if __name__ == '__main__':
+IO.setmode(IO.BCM)
 
-    IO.setup(arm_input, IO.IN, pull_up_down=IO.PUD_UP)
-    IO.setup(arm_light, IO.OUT)
-    IO.add_event_detect(arm_input, IO.FALLING, callback=arm_callback, bouncetime=600)
+IO.setup(arm_input, IO.IN, pull_up_down=IO.PUD_UP)
+IO.setup(arm_light, IO.OUT)
+IO.add_event_detect(arm_input, IO.FALLING, callback=arm_callback, bouncetime=600)
 
-    IO.setup(rotaryA_X, IO.IN, pull_up_down=IO.PUD_DOWN)
-    IO.setup(rotaryB_X, IO.IN, pull_up_down=IO.PUD_DOWN)
+IO.setup(rotaryA_X, IO.IN, pull_up_down=IO.PUD_DOWN)
+IO.setup(rotaryB_X, IO.IN, pull_up_down=IO.PUD_DOWN)
 
-    IO.add_event_detect(rotaryA_X, IO.BOTH, callback=rotary_callback_X, bouncetime=1)
-    IO.add_event_detect(rotaryB_X, IO.BOTH, callback=rotary_callback_X, bouncetime=1)
+IO.add_event_detect(rotaryA_X, IO.BOTH, callback=rotary_callback_X, bouncetime=1)
+IO.add_event_detect(rotaryB_X, IO.BOTH, callback=rotary_callback_X, bouncetime=1)
 
-    IO.setup(rotaryA_Y, IO.IN, pull_up_down=IO.PUD_DOWN)
-    IO.setup(rotaryB_Y, IO.IN, pull_up_down=IO.PUD_DOWN)
+IO.setup(rotaryA_Y, IO.IN, pull_up_down=IO.PUD_DOWN)
+IO.setup(rotaryB_Y, IO.IN, pull_up_down=IO.PUD_DOWN)
 
-    IO.add_event_detect(rotaryA_Y, IO.BOTH, callback=rotary_callback_Y, bouncetime=1)
-    IO.add_event_detect(rotaryB_Y, IO.BOTH, callback=rotary_callback_Y, bouncetime=1)
+IO.add_event_detect(rotaryA_Y, IO.BOTH, callback=rotary_callback_Y, bouncetime=1)
+IO.add_event_detect(rotaryB_Y, IO.BOTH, callback=rotary_callback_Y, bouncetime=1)
 
-    IO.setup(endstop_X, IO.IN, pull_up_down=IO.PUD_UP)
-    IO.setup(endstop_Y, IO.IN, pull_up_down=IO.PUD_UP)
+IO.setup(endstop_X, IO.IN, pull_up_down=IO.PUD_UP)
+IO.setup(endstop_Y, IO.IN, pull_up_down=IO.PUD_UP)
 
-    signal.signal(signal.SIGINT, signal_handler)
-    IO.output(arm_light, IO.LOW)
+signal.signal(signal.SIGINT, signal_handler)
+IO.output(arm_light, IO.LOW)
 
 # function to move stepper motor for X axis
 def move_X(direction, style):
