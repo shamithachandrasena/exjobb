@@ -81,16 +81,16 @@ IO.output(arm_light, IO.LOW)
 # function to move stepper motor for X axis
 def move_X(direction, style):
     global arm
-    global val_X
-    if arm and val_X < 800:
+    global coord_X
+    if arm and coord_X < 800:
         kit.stepper1.onestep(direction=direction, style=style)
         time.sleep(speed)
 
 # function to move stepper motor for Y axis
 def move_Y(direction, style):
     global arm
-    global val_Y
-    if arm and val_Y < 400:
+    global coord_Y
+    if arm and coord_Y < 400:
         kit.stepper2.onestep(direction=direction, style=style)
         time.sleep(speed)
 
@@ -124,9 +124,11 @@ def move_to_X(x, style):
     if x > coord_X:
         while val_X < length:
             move_X(stepper.FORWARD, style)
+            print(val_X)
     elif x < coord_X:
         while val_X < length:
             move_X(stepper.BACKWARD, style)
+            print(val_X)
     
     coord_X = x
 
@@ -142,9 +144,11 @@ def move_to_Y(y, style):
     if y > coord_Y:
         while val_Y < length:
             move_Y(stepper.FORWARD, style)
+            print(val_Y)
     elif y < coord_Y:
         while val_Y < length:
             move_Y(stepper.BACKWARD, style)
+            print(val_Y)
     
     coord_Y = y
 
@@ -152,5 +156,5 @@ def move_to_Y(y, style):
 def move_to(x, y, style):
     move_to_X(x, style)
     move_to_Y(y, style)
-    
+
 
