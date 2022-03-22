@@ -6,6 +6,8 @@ import RPi.GPIO as IO
 
 light = 23
 
+IO.setup(light, IO.OUT)
+
 def signal_handler(sig, frame): 
     IO.cleanup()
     sys.exit(0)
