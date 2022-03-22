@@ -31,6 +31,8 @@ endstop_Y = 21
 speed = 0.05
 
 def signal_handler(sig, frame): 
+    kit.stepper1.release()
+    kit.stepper2.release()
     IO.cleanup()
     sys.exit(0)
 
