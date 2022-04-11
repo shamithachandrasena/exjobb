@@ -1,0 +1,9 @@
+{
+    "mac_address": "XX"
+    ,"item_id": "XX"
+    ,"mode":"Pick"
+    ,"_comment":"Modes can be: Pick, Place or Setup. When is Setup it will return item_id together with x, y and height height"
+    ,"x-axis":0
+    ,"y-axis":0
+    ,"height":0
+}
