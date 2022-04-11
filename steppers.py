@@ -28,7 +28,7 @@ coord_Y = 0
 endstop_X = 20
 endstop_Y = 21
 
-speed = 0.05
+speed = 0.02
 
 def signal_handler(sig, frame): 
     kit.stepper1.release()
@@ -85,7 +85,7 @@ def move_X(direction, style):
     global arm
     global coord_X
     if arm and coord_X < 800:
-        kit.stepper1.onestep(direction=direction, style=style)
+        kit.stepper2.onestep(direction=direction, style=style)
         time.sleep(speed)
 
 # function to move stepper motor for Y axis
@@ -93,7 +93,7 @@ def move_Y(direction, style):
     global arm
     global coord_Y
     if arm and coord_Y < 400:
-        kit.stepper2.onestep(direction=direction, style=style)
+        kit.stepper1.onestep(direction=direction, style=style)
         time.sleep(speed)
 
 # function to calibrate X axis stepper motor
@@ -101,7 +101,7 @@ def calibrate_X():
     global val_X
     global coord_X
     while IO.input(endstop_X) == IO.HIGH:
-        move_X(stepper.BACKWARD, stepper.SINGLE)
+        move_X(stepper.FORWARD, stepper.SINGLE)
     val_X = 0
     coord_X = 0
 
