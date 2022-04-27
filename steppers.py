@@ -25,8 +25,8 @@ val_Y = 0
 coord_X = 0
 coord_Y = 0
 
-endstop_X = 20
-endstop_Y = 21
+endstop_X = 21
+endstop_Y = 20
 
 speed = 0.02
 
@@ -145,11 +145,11 @@ def move_to_Y(y, style):
 
     if y > coord_Y:
         while val_Y < length:
-            move_Y(stepper.FORWARD, style)
+            move_Y(stepper.BACKWARD, style)
             print(val_Y)
     elif y < coord_Y:
         while val_Y < length:
-            move_Y(stepper.BACKWARD, style)
+            move_Y(stepper.FORWARD, style)
             print(val_Y)
     
     coord_Y = y
