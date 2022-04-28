@@ -25,7 +25,7 @@ def get_height():
 
 # Returns item
 def get_item():
-    return data['item']
+    return data['item_id']
 
 # Write to file
 def write_to_file(key, value):

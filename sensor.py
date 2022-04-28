@@ -55,8 +55,7 @@ def get_evo_range(evo_serial):
     elif rng == 0: # Sensor detecting object below minimum range
         dec_out = -float('inf')
     else:
-        # Convert frame to mm
-        dec_out = rng / 10.0
+        dec_out = rng
     return dec_out
 
 def initEvo():

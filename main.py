@@ -5,38 +5,37 @@ import light
 import casat_interface
 import sensor
 
-while(not steppers.arm):
-    time.sleep(0.1)
 
 evo = sensor.initEvo()
+casat_interface.update_data()
 
 last_item = ''
 picked = False
 
 debug = True
 
-while(True):
+while(not steppers.arm):
+    time.sleep(0.1)
 
-    # Wait and update for new item
-    while(last_item != casat_interface.get_item()):
-        casat_interface.update_data()
-    last_item = casat_interface.get_item()
-    picked = False
-    light.set_light(False)
+while(True):
 
     # Go to 0, 0
     steppers.calibrate_X()
     steppers.calibrate_Y()
     time.sleep(0.2)
 
+    picked = False
+    light.set_light(False)
+
+
     # Move to curren position and turn on light
-    steppers.move_to(casat_interface.get_X(), casat_interface.get_Y(), steppers.stepper.SINGLE)
+    steppers.move_to(casat_interface.get_x_axis(), casat_interface.get_y_axis(), steppers.stepper.SINGLE)
     time.sleep(0.2)
     light.set_light(True)
 
     # Measure the current height
     for i in range(20):
-        sensor.get_height(evo) # Flush out the first measurements
+        sensor.get_evo_range(evo) # Flush out the first measurements
     base_heigt = sensor.get_evo_range(evo)
 
     # DEBUG
@@ -46,7 +45,7 @@ while(True):
     # Look for variation bigger than the threshold
     height = sensor.get_evo_range(evo)
     threshold = 50 # mm
-    trig_buffer = 20
+    trig_buffer = 100
     counter = 0
     while(True):
         if base_heigt - height > threshold:
@@ -65,10 +64,16 @@ while(True):
 
     # Flash light to indicate that the item has been picked
     light.set_light(False)
-    time.sleep(0.5)
+    time.sleep(1)
     light.set_light(True)
 
 
+    # Wait and update for new item
+    while(last_item != casat_interface.get_item()):
+        casat_interface.update_data()
+#        if debug:
+#            print('Waiting...')
+    last_item = casat_interface.get_item()
 
     
 
