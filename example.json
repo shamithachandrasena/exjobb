@@ -1,9 +1,9 @@
 {
-    "mac_address": "XX"
-    ,"item_id": "XX"
+    "mac_address": "XX:XX:XX:XX:XX:XX"
+    ,"item_id": "A09"
     ,"mode":"Pick"
-    ,"_comment":"Modes can be: Pick, Place or Setup. When is Setup it will return item_id together with x, y and height height"
-    ,"x-axis":0
-    ,"y-axis":0
-    ,"height":0
+    ,"_comment":"Modes can be: Pick, Place or Setup. When is Setup it will return item_id together with x and y"
+    ,"x-axis":120
+    ,"y-axis":125
+    ,"picked":0
 }

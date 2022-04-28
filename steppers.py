@@ -125,12 +125,10 @@ def move_to_X(x, style):
 
     if x > coord_X:
         while val_X < length:
-            move_X(stepper.FORWARD, style)
-            print(val_X)
+            move_X(stepper.BACKWARD, style)
     elif x < coord_X:
         while val_X < length:
-            move_X(stepper.BACKWARD, style)
-            print(val_X)
+            move_X(stepper.FORWARD, style)
     
     coord_X = x
 
@@ -145,12 +143,10 @@ def move_to_Y(y, style):
 
     if y > coord_Y:
         while val_Y < length:
-            move_Y(stepper.BACKWARD, style)
-            print(val_Y)
+            move_Y(stepper.FORWARD, style)
     elif y < coord_Y:
         while val_Y < length:
-            move_Y(stepper.FORWARD, style)
-            print(val_Y)
+            move_Y(stepper.BACKWARD, style)
     
     coord_Y = y
 

@@ -26,3 +26,9 @@ def get_height():
 # Returns item
 def get_item():
     return data['item']
+
+# Write to file
+def write_to_file(key, value):
+    data[key] = value 
+    with open('example.json', 'w') as outfile:
+        json.dump(data, outfile)
