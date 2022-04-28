@@ -1,4 +1,3 @@
-from asyncio.windows_events import NULL
 import serial
 import serial.tools.list_ports
 import sys
@@ -13,7 +12,7 @@ def findEvo():
         if "5740" in p[2]:
             print('Evo found on port ' + p[0])
             return p[0]
-    return 'NULL'
+    return None
 
 def openEvo(portname):
     print('Attempting to open port...')
@@ -56,17 +55,17 @@ def get_evo_range(evo_serial):
     elif rng == 0: # Sensor detecting object below minimum range
         dec_out = -float('inf')
     else:
-        # Convert frame in meters
-        dec_out = rng / 1000.0
+        # Convert frame to mm
+        dec_out = rng / 10.0
     return dec_out
 
 def initEvo():
     port = findEvo()
 
-    evo = NULL
+    evo = None
 
-    if port == 'NULL':
-        print("Sorry couldn't find the Evo. Exiting.")
+    if port == None:
+        print("Sorry couldn't find the Evo.")
     else:
         evo = openEvo(port)
     
