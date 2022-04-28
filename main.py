@@ -19,6 +19,9 @@ while(not steppers.arm):
 
 while(True):
 
+    if debug:
+        print(casat_interface.get_item())
+
     # Go to 0, 0
     steppers.calibrate_X()
     steppers.calibrate_Y()
@@ -71,9 +74,8 @@ while(True):
     # Wait and update for new item
     while(last_item != casat_interface.get_item()):
         casat_interface.update_data()
-#        if debug:
-#            print('Waiting...')
     last_item = casat_interface.get_item()
+    
 
     
 
