@@ -1,11 +1,12 @@
 import json
 
-data = None
+data = {}
 
 def update_data():
     global data
     with open('example.json') as json_file:
         data = json.load(json_file)
+        json_file.close()
 
 # Returns mode, which is either Pick, Place or Setup
 def get_mode():
@@ -32,3 +33,5 @@ def write_to_file(key, value):
     data[key] = value 
     with open('example.json', 'w') as outfile:
         json.dump(data, outfile)
+        outfile.close()
+

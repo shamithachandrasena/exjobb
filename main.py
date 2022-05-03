@@ -4,12 +4,12 @@ import time
 import light
 import casat_interface
 import sensor
-
+import json
 
 evo = sensor.initEvo()
 casat_interface.update_data()
 
-last_item = ''
+last_item = casat_interface.get_item()
 picked = False
 
 debug = True
@@ -22,13 +22,15 @@ while(True):
     if debug:
         print(casat_interface.get_item())
 
+
+    picked = False
+    light.set_light(False)
+
     # Go to 0, 0
     steppers.calibrate_X()
     steppers.calibrate_Y()
     time.sleep(0.2)
 
-    picked = False
-    light.set_light(False)
 
 
     # Move to curren position and turn on light
@@ -72,8 +74,20 @@ while(True):
 
 
     # Wait and update for new item
-    while(last_item != casat_interface.get_item()):
-        casat_interface.update_data()
+    while(last_item == casat_interface.get_item()):
+        try:
+            casat_interface.update_data()
+            if debug:
+                print(last_item)
+                print(casat_interface.get_item())
+                time.sleep(0.5)
+        except ValueError:
+            print('Error loading file, trying again...')
+            time.sleep(0.5)
+            pass
+
+
+
     last_item = casat_interface.get_item()
     
 

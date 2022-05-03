@@ -39,10 +39,12 @@ def update_data():
     global data
     with open('example.json') as json_file:
         data = json.load(json_file)
+        json_file.close()
 
 while(True):
     update_data()
     if data['picked'] == 1:
+        print('Updated')
         time.sleep(3)
         place = get_random_place()
         data['item_id'] = place.item_id
@@ -51,6 +53,7 @@ while(True):
         data['picked'] = 0
         with open('example.json', 'w') as outfile:
             json.dump(data, outfile)
-    else: 
+            outfile.close()
+    else:
         time.sleep(0.1)
 
