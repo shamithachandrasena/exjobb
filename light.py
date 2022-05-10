@@ -18,3 +18,9 @@ def set_light(state):
     else:
         IO.output(light, IO.LOW)
 
+# Lamp flash
+def flash_light(state):
+    set_light(not state)
+    time.sleep(1)
+    set_light(state)
+
