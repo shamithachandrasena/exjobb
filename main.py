@@ -39,7 +39,7 @@ while(True):
     # ---------------------------------------------------------------
     # Pick mode - Status: Finished
     # ---------------------------------------------------------------
-    if casat_interface.get_mode() == 'pick':
+    if casat_interface.get_mode() == 'Pick':
 
         # Move to curren position and turn on light
         steppers.move_to(casat_interface.get_x_axis(), casat_interface.get_y_axis(), steppers.stepper.SINGLE)
@@ -83,7 +83,7 @@ while(True):
     # ---------------------------------------------------------------
     # Place mode - Status: TODO
     # ---------------------------------------------------------------
-    elif casat_interface.get_mode() == 'place':
+    elif casat_interface.get_mode() == 'Place':
         print( 'Place mode not yet implemented' )
     # ---------------------------------------------------------------
 
@@ -91,7 +91,7 @@ while(True):
     # ---------------------------------------------------------------
     # Setup mode - Status: Not tested
     # ---------------------------------------------------------------
-    elif casat_interface.get_mode() == 'setup':
+    elif casat_interface.get_mode() == 'Setup':
         light.set_light(True)
         while(casat_interface.is_picked() == False): # Exit setup mode by setting 'picked' to 1
             # Move to given position

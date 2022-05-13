@@ -10,26 +10,20 @@ class Place:
         self.x = x
         self.y = y
 
-A01 = Place('A01', 120, 150)
-A02 = Place('A02', 240, 125)
-A03 = Place('A03', 120, 150)
-A04 = Place('A04', 240, 125)
-A05 = Place('A05', 120, 150)
-A06 = Place('A06', 240, 125)
-A07 = Place('A07', 120, 150)
-A08 = Place('A08', 240, 125)
-A09 = Place('A09', 120, 150)
-A10 = Place('A10', 240, 125)
+A04 = Place('A04', 5, 142)
+A05 = Place('A05', 50, 122)
+A06 = Place('A06', 79, 93)
+A07 = Place('A07', 20, 175)
+A08 = Place('A08', 115, 155)
+A09 = Place('A09', 315, 150)
+A10 = Place('A10', 400, 170)
 A11 = Place('A11', 120, 150)
-A12 = Place('A12', 240, 125)
-A13 = Place('A13', 120, 150)
-A14 = Place('A14', 240, 125)
-A15 = Place('A15', 120, 150)
-A16 = Place('A16', 240, 125)
-A17 = Place('A17', 120, 150)
-A18 = Place('A18', 240, 125)
+A12 = Place('A12', 275, 112)
+A13 = Place('A13', 412, 135)
+A14 = Place('A14', 360, 117)
+A15 = Place('A15', 343, 84)
 
-places = [A01, A02, A03, A04, A05, A06, A07, A08, A09, A10, A11, A12, A13, A14, A15, A16, A17, A18]
+places = [A04, A05, A06, A07, A08, A09, A10, A11, A12, A13, A14, A15]
 
 def get_random_place():
     return random.choice(places)
