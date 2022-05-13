@@ -47,9 +47,10 @@ while(True):
         light.set_light(True)
 
         # Measure the current height
-        for i in range(20):
+        for i in range(40):
             sensor.get_evo_range(evo) # Flush out the first measurements
         base_heigt = sensor.get_evo_range(evo)
+        time.sleep(0.5)
 
         # DEBUG
         if debug:
@@ -89,7 +90,7 @@ while(True):
 
 
     # ---------------------------------------------------------------
-    # Setup mode - Status: Not tested
+    # Setup mode - Status: Finished
     # ---------------------------------------------------------------
     elif casat_interface.get_mode() == 'Setup':
         light.set_light(True)
