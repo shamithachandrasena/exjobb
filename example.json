@@ -1,1 +1,1 @@
-{"mac_address": "XX:XX:XX:XX:XX:XX", "item_id": "A13", "mode": "Pick", "_comment": "Modes can be: Pick, Place or Setup. When is Setup it will return item_id together with x and y", "x-axis": 412, "y-axis": 135, "picked": 0}
+{"mac_address": "XX:XX:XX:XX:XX:XX", "item_id": "A08", "mode": "Pick", "_comment": "Modes can be: Pick, Place or Setup. When is Setup it will return item_id together with x and y", "x-axis": 145, "y-axis": 163, "picked": 0}
