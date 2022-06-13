@@ -43,31 +43,39 @@ while(True):
 
         # Move to curren position and turn on light
         steppers.move_to(casat_interface.get_x_axis(), casat_interface.get_y_axis(), steppers.stepper.SINGLE)
-        time.sleep(0.2)
-        light.set_light(True)
 
         # Measure the current height
-        for i in range(40):
-            sensor.get_evo_range(evo) # Flush out the first measurements
-        base_heigt = sensor.get_evo_range(evo)
+        base_height = 0
+        while True:
+            for i in range(1000):
+                sensor.get_evo_range(evo) # Flush out the first measurements
+            base_height = sensor.get_evo_range(evo)
+            if isinstance(base_height, int):
+                break
         time.sleep(0.5)
+
+        light.set_light(True)
 
         # DEBUG
         if debug:
-            print('Base height: ' + str(base_heigt))
+            print('Base height: ' + str(base_height))
 
         # Look for variation bigger than the threshold
         height = sensor.get_evo_range(evo)
-        threshold = 50 # mm
-        trig_buffer = 100
+        threshold = 75 # mm
+        trig_buffer = 50
         counter = 0
-        while(True):
-            if base_heigt - height > threshold:
+        while True:
+            if base_height - height > threshold:
+                if debug:
+                    print(base_height - height)
                 counter += 1
-            elif counter > trig_buffer:
-                picked = True
-                break
-            height = sensor.get_evo_range(evo)
+                time.sleep(0.01)
+                if counter > trig_buffer:
+                    picked = True
+                    break
+            if isinstance(height, int):
+                height = sensor.get_evo_range(evo)
         
         # DEBUG
         if debug:
